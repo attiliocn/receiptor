@@ -1,0 +1,34 @@
+{
+  "fixtures": [
+    {
+      "id": "paraiso_baseline",
+      "path": "tests/fixtures/pdfs/paraiso_baseline.pdf",
+      "type": "pdf",
+      "expected": {
+        "status": "pass",
+        "minimum_items": 1
+      },
+      "notes": "Baseline passing supermarket receipt fixture"
+    },
+    {
+      "id": "antonelli_variant",
+      "path": "tests/fixtures/pdfs/antonelli_variant.pdf",
+      "type": "pdf",
+      "expected": {
+        "status": "pass_or_low_match",
+        "minimum_items": 0
+      },
+      "notes": "Different layout variant used to monitor extraction drift"
+    },
+    {
+      "id": "mixed_case_item_text",
+      "path": "tests/fixtures/text/mixed_case_item.txt",
+      "type": "text",
+      "expected": {
+        "status": "known_issue",
+        "minimum_items": 1
+      },
+      "notes": "Current regex expects item names to start in uppercase and may miss this"
+    }
+  ]
+}
