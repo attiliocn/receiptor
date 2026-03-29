@@ -4,6 +4,9 @@ data/
 # vscode settings
 .vscode/
 
+# GitHub directory
+.github/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
