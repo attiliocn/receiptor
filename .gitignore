@@ -1,6 +1,10 @@
 # Local PDF files (receipts)
 data/
 
+# Temporary files
+.tmp/
+scratch.ipynb
+
 # vscode settings
 .vscode/
 
