@@ -38,10 +38,22 @@ def test_process_receipt_creates_output_and_columns(fixtures_dir: Path, temp_out
 
 
 @pytest.mark.integration
-@pytest.mark.known_issue
 def test_process_receipt_variant_layout_regression(fixtures_dir: Path, temp_output_csv: Path) -> None:
     pdf_path = fixtures_dir / "pdfs" / "antonelli_variant.pdf"
 
     df = process_receipt(str(pdf_path), str(temp_output_csv))
 
     assert not df.empty
+
+@pytest.mark.integration
+def test_has_comma_prod_name(fixtures_dir: Path, temp_output_csv: Path) -> None:
+    pdf_path = fixtures_dir / "pdfs" / "has_comma_prod_name.pdf"
+
+    df = process_receipt(str(pdf_path), str(temp_output_csv))
+
+    assert df['item_name'].str.contains(',').any(), "No item_name contains a comma"
+
+    raw = temp_output_csv.read_text(encoding="utf-8-sig")
+    assert raw.startswith("item_name;"), "Output CSV does not have semicolon delimiter"
+
+

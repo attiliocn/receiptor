@@ -15,10 +15,10 @@
       "path": "tests/fixtures/pdfs/antonelli_variant.pdf",
       "type": "pdf",
       "expected": {
-        "status": "pass_or_low_match",
-        "minimum_items": 0
+        "status": "pass",
+        "minimum_items": 1
       },
-      "notes": "Different layout variant used to monitor extraction drift"
+      "notes": "Different layout variant — previously a known issue, now passes"
     },
     {
       "id": "mixed_case_item_text",
@@ -29,6 +29,16 @@
         "minimum_items": 1
       },
       "notes": "Current regex expects item names to start in uppercase and may miss this"
+    },
+    {
+      "id": "has_comma_prod_name",
+      "path": "tests/fixtures/pdfs/has_comma_prod_name.pdf",
+      "type": "pdf",
+      "expected": {
+        "status": "known_issue",
+        "minimum_items": 1
+      },
+      "notes": "The parser extract the fields as expected, but product names that have commas will cause a error when splitting the columns in Excel because the comma is not escaped"
     }
   ]
 }
