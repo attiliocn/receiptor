@@ -250,16 +250,17 @@ def validate_dataframe(df: pd.DataFrame) -> None:
     print("\n" + "="*70)
 
 
-def save_to_csv(df: pd.DataFrame, output_file: str = "items.csv") -> None:
+def save_to_csv(df: pd.DataFrame, output_file: str = "items.csv", delimiter: str = ";") -> None:
     """
     Save DataFrame to CSV file.
     
     Args:
         df: DataFrame with items
         output_file: Output filename
+        delimiter: CSV delimiter (default: ";")
     """
     print(f"[INFO] Saving data to {output_file}")
-    df.to_csv(output_file, index=False, encoding='utf-8-sig')
+    df.to_csv(output_file, index=False, encoding='utf-8-sig', sep=delimiter)
     print(f"[SUCCESS] Data saved successfully")
 
 
